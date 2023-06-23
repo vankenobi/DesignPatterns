@@ -8,7 +8,7 @@ namespace SingletonPattern
         static async Task Main(string[] args)
         {
             // The object creates just one time on runtime and we can access the object
-
+            // The processs is runnig just two seconds.
             Console.WriteLine(DateTime.Now.ToLongTimeString().ToString());
             var countries = await CountryBuilder.Instance.GetCountries();
 
