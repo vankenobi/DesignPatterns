@@ -6,12 +6,12 @@ namespace AdapterPattern // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            // If you want to change the Apapter, you can new from JsonBankApiAdapter because this takes the
+            // If you want to change the Apapter, you can create a new instance from JsonBankApiAdapter Class because this takes the
             // implementation from same interface
             IBankApi xmlBankApiApapter = new JsonBankApiAdapter();
             var result = xmlBankApiApapter.ExecuteTransaction(new TransferTransaction() {
-                FromIban = "12345678901234567",
-                ToIban = "1244326547658479",
+                FromIban = "TR760009901234567800100001",
+                ToIban = "TR760009901234567800100002",
                 Amount = 232154375
             });
             Console.WriteLine(result);
@@ -58,7 +58,7 @@ namespace AdapterPattern // Note: actual namespace depends on the project name.
                         {
                         "FromIban":"{{transferTransaction.FromIban}}",
                         "ToIban":"{{transferTransaction.ToIban}}",
-                        "Amount":"{{transferTransaction.Amount}}"
+                        "Amount":"{{transferTransaction.Amount:C2}}"
                         }
                         """;
             Console.WriteLine(json);
@@ -84,6 +84,7 @@ namespace AdapterPattern // Note: actual namespace depends on the project name.
         }
     }
 
+    //Model
     public class TransferTransaction
     {
         public string FromIban { get; set; }
